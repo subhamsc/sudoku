@@ -1,10 +1,10 @@
 const setLevel = function(level){
   let modes = {
-    beginner:50,
-    easy:60,
-    medium:80,
-    hard:100,
-    expert:120
+    beginner:10,
+    easy:20,
+    medium:40,
+    hard:60,
+    expert:80
   };
   return modes[level];
 };

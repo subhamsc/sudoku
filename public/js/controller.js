@@ -23,7 +23,8 @@ let setTime = function(time){
   },1000);
 };
 
-let loadSudoku = function(emptyPos){
+let loadSudoku = function(){
+  let emptyPos = getLevel();
   if(!emptyPos) emptyPos = 40;
   let displayBoard = getDisplayBoard(emptyPos);
   displayBoard.forEach((row,rowIndex)=>{
@@ -79,13 +80,12 @@ const getLevel = function(){
 };
 
 let setChallenge = function(){
-  reset();
   document.getElementById('beginner').onclick = getLevel;
   document.getElementById('easy').onclick = getLevel;
   document.getElementById('medium').onclick = getLevel;
   document.getElementById('hard').onclick = getLevel;
   document.getElementById('expert').onclick = getLevel;
-  startGame();
+  reset();
 }
 
 
@@ -100,13 +100,12 @@ let start = function(){
 };
 
 let startGame = function(){
-  let emptyPos = getLevel();
   document.getElementById('start').onclick = start;
   document.getElementById('reset').onclick = reset;
   document.getElementById('solve').onclick = gameResult;
   document.getElementById('solve').disabled = true;
   document.getElementsByClassName('levels')[0].onclick = setChallenge;
-  loadSudoku(emptyPos);
+  loadSudoku();
 }
 
 window.onload = startGame;
