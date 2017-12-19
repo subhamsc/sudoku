@@ -25,7 +25,7 @@ let setTime = function(time){
 
 let loadSudoku = function(emptyPos){
   if(!emptyPos) emptyPos = 40;
-  let displayBoard = display(emptyPos);
+  let displayBoard = getDisplayBoard(emptyPos);
   displayBoard.forEach((row,rowIndex)=>{
     row.forEach((ele,colIndex)=>{
       if(ele>0){

@@ -1,5 +1,4 @@
-//const solveSudoku = require('./sudokuSolver.js').solveSudoku;
-let emptyBoard =  [
+const board =  [
   [0, 0, 0, 0, 0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -8,21 +7,39 @@ let emptyBoard =  [
   [0, 0, 0, 0, 0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0]];
+  [0, 0, 0, 0, 0, 0, 0, 0, 0]
+];
 
-let generateSudoku = function(board){
-  for (let i=0; i<5; i++) {
-    let num = Math.ceil(Math.random()*9);
-    let row = Math.round(Math.random()*8);
-    let col = Math.round(Math.random()*8);
-    if(board[row][col]==0)
-    board[row][col]=num;
-  }
+const generate = function(board){
+  let solution = solveSudoku(board);
+  let shuffledBoard = shuffle(solution);
+  if(isUniq(shuffledBoard))
+  return shuffledBoard;
+}
+
+const setPosEmpty = function(board,max,pos){
+  let row = Math.floor(Math.random()*9);
+  let col = Math.floor(Math.random()*9);
+  board[row][col]=0;
+  max--;
   try {
+    if(max<=0) return;
     solveSudoku(board);
-    return board;
-  } catch (e) {
-    generateSudoku(board);
+    if(isUniq(board)){
+      pos.push(''+row+col);
+      setPosEmpty(board,max,pos);
+    }
+  } catch(e){
+    return;
   }
+  return pos;
 };
-//console.log(generateSudoku(emptyBoard));
+
+const getDisplayBoard = function(numOfPos){
+  let shuffledBoard = generate(board);
+  let emptyPos = setPosEmpty(shuffledBoard,numOfPos,[]);
+  emptyPos.forEach((pos)=>{
+    board[getRow(pos)][getCol(pos)]=0;
+  });
+  return board;
+};
