@@ -58,7 +58,7 @@ const getCol = function(pos){
   return pos%10;
 };
 
-const replace = function(board,successor,replacer){
+const swapNumber = function(board,successor,replacer){
   let  successorIndexes = getIndexesOf(board,successor);
   let replacerIndexes = getIndexesOf(board,replacer);
   successorIndexes.forEach(function(pos,index){
@@ -69,36 +69,44 @@ const replace = function(board,successor,replacer){
   return board;
 };
 
+let takeRandomNumZeroToTwo = function(){
+  return Math.floor(Math.random()*3);
+};
+
+let takeRandomNumOneToNine = function(){
+  return Math.ceil(Math.random()*9);
+};
+
 const shuffleNumbers = function(board){
-  let firstNum = Math.ceil(Math.random()*9);
-  let secondNum = Math.ceil(Math.random()*9);
-  return replace(board,firstNum,secondNum);
+  let firstNum = takeRandomNumOneToNine();
+  let secondNum = takeRandomNumOneToNine();
+  return swapNumber(board,firstNum,secondNum);
 };
 
 const shuffleRows = function(board){
-  let firstRow = Math.floor(Math.random()*3);
-  let secondRow = Math.floor(Math.random()*3);
-  let block = Math.floor(Math.random()*3);
-  return swapRows(board,firstRow+block*3,secondRow+block*3);
+  let firstRow = takeRandomNumZeroToTwo();
+  let secondRow = takeRandomNumZeroToTwo();
+  let block = 3 * takeRandomNumZeroToTwo();
+  return swapRows(board,firstRow+block,secondRow+block);
 };
 
 const shuffleCols = function(board){
-  let firstCol = Math.floor(Math.random()*3);
-  let secondCol = Math.floor(Math.random()*3);
-  let block = Math.floor(Math.random()*3);
-  return swapCols(board,firstCol+block*3,secondCol+block*3);
+  let firstCol = takeRandomNumZeroToTwo();
+  let secondCol = takeRandomNumZeroToTwo();
+  let block = 3 * takeRandomNumZeroToTwo();
+  return swapCols(board,firstCol+block,secondCol+block);
 };
 
 const shuffleRowBlocks = function(board){
-  let firstBlock = Math.floor(Math.random()*3);
-  let secondBlock = Math.floor(Math.random()*3);
-  return swapRowBlocks(board,firstBlock*3,secondBlock*3);
+  let firstBlock = 3 * takeRandomNumZeroToTwo();
+  let secondBlock = 3 * takeRandomNumZeroToTwo();
+  return swapRowBlocks(board,firstBlock,secondBlock);
 };
 
 const shuffleColBlocks = function(board){
-  let firstBlock = Math.floor(Math.random()*3);
-  let secondBlock = Math.floor(Math.random()*3);
-  return swapColBlocks(board,firstBlock*3,secondBlock*3);
+  let firstBlock = 3 * takeRandomNumZeroToTwo();
+  let secondBlock = 3 * takeRandomNumZeroToTwo();
+  return swapColBlocks(board,firstBlock,secondBlock);
 };
 
 const shuffle = function(board){
