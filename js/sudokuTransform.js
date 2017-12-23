@@ -63,7 +63,7 @@ const swapNumber = function(board,successor,replacer){
   let replacerIndexes = getIndexesOf(board,replacer);
   successorIndexes.forEach(function(pos,index){
     let temp = board[getRow(pos)][getCol(pos)];
-    board[getRow(pos)][getCol(pos)]=board[getRow(replacerIndexes[index])][getCol(replacerIndexes[index])];
+    board[getRow(pos)][getCol(pos)] = board[getRow(replacerIndexes[index])][getCol(replacerIndexes[index])];
     board[getRow(replacerIndexes[index])][getCol(replacerIndexes[index])] = temp;
   });
   return board;
