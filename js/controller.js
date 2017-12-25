@@ -47,11 +47,11 @@ let hasWon = function(filledSudoku){
 let gameResult = function(){
   let filledSudoku = getFilledBoard();
   if(hasWon(filledSudoku))
-  document.getElementById('result').innerHTML = 'Congratulation you won';
+  document.getElementById('result').innerHTML = 'Congratulation right solution';
   else
   document.getElementById('result').innerHTML = 'Ohhhhh wrong solution';
   clearInterval(timeInterval);
-  document.getElementById('solve').disabled=true;
+  document.getElementById('solve').style.visibility = 'hidden';
   document.getElementsByClassName('board')[0].disabled = true;
 };
 
@@ -65,13 +65,11 @@ let reset = function(){
   });
   document.getElementById('result').innerHTML = ''
   clearInterval(timeInterval);
-  document.getElementById('start').disabled=false;
-  document.getElementsByClassName('levels')[0].disabled=false;
   document.getElementById('minute').innerHTML = 0;
   document.getElementById('second').innerHTML = 0;
   document.getElementsByClassName('board')[0].onclick = false;
   filledPos = [];
-  startGame();
+  loadSudoku();
 };
 
 const getLevel = function(){
@@ -80,11 +78,9 @@ const getLevel = function(){
 };
 
 let setChallenge = function(){
-  document.getElementById('beginner').onclick = getLevel;
-  document.getElementById('easy').onclick = getLevel;
-  document.getElementById('medium').onclick = getLevel;
-  document.getElementById('hard').onclick = getLevel;
-  document.getElementById('expert').onclick = getLevel;
+  let id = event.target.id;
+  if(!id || id == 'accept') return;
+  document.getElementById(id).onclick = getLevel;
   reset();
 }
 
@@ -92,20 +88,27 @@ let setChallenge = function(){
 let start = function(){
   let time = 1483295400000;
   setTime(time);
+  document.getElementById('solve').disabled=false;
   document.getElementsByClassName('board')[0].onclick = fillSudoku;
   document.getElementById('result').innerHTML = '';
-  document.getElementById('start').disabled=true;
-  document.getElementById('solve').disabled=false;
-  document.getElementsByClassName('levels')[0].onclick=false;
 };
 
-let startGame = function(){
-  document.getElementById('start').onclick = start;
-  document.getElementById('reset').onclick = reset;
+let acceptChallenge = function(){
+  document.getElementsByClassName('levels')[0].style.visibility = 'hidden';
+  document.getElementsByClassName('sudokuField')[0].style.visibility = 'visible';
+  document.getElementById('solve').style.visibility = 'visible';
+  document.getElementById('reset').onclick = loadGame;
   document.getElementById('solve').onclick = gameResult;
-  document.getElementById('solve').disabled = true;
-  document.getElementsByClassName('levels')[0].onclick = setChallenge;
-  loadSudoku();
+  start();
 }
 
-window.onload = startGame;
+let loadGame = function(){
+  reset();
+  document.getElementById('solve').style.visibility = 'hidden';
+  document.getElementsByClassName('levels')[0].style.visibility = 'visible';
+  document.getElementsByClassName('levels')[0].onclick = setChallenge;
+  document.getElementsByClassName('sudokuField')[0].style.visibility = 'hidden';
+  document.getElementById('accept').onclick = acceptChallenge;
+}
+
+window.onload = loadGame;

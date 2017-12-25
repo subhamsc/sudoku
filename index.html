@@ -13,142 +13,147 @@
   <script src="js/levels.js" type="text/javascript" charset="utf-8"></script>
 </head>
 <body>
+  <center>
   <div class="container">
-    <div class="levels">
-      <h4>Take a Challenge</h4>
-      <input type="radio" name="mode" id="beginner" value="beginner">
-      <label for="beginner">Beginner</label><br>
-      <input type="radio" name="mode" id="easy" value="easy">
-      <label for="easy">Easy</label><br>
-      <input type="radio" name="mode" id="medium" value="medium">
-      <label for="medium">Medium</label><br>
-      <input type="radio" name="mode" id="hard" value="hard">
-      <label for="hard">Hard</label><br>
-      <input type="radio" name="mode" id="expert" value="expert">
-      <label for="expert">Expert</label><br>
+    <h2>SUDOKU</h2>
+      <div class="levels">
+        <h4>Take a Challenge</h4>
+        <input type="radio" class="level" name="mode" id="beginner" value="beginner">
+        <label for="beginner">Beginner</label><br>
+        <input type="radio" class="level" name="mode" id="easy" value="easy">
+        <label for="easy">Easy</label><br>
+        <input type="radio" class="level" name="mode" id="medium" value="medium" checked>
+        <label for="medium">Medium</label><br>
+        <input type="radio" class="level" name="mode" id="hard" value="hard">
+        <label for="hard">Hard</label><br>
+        <input type="radio" class="level" name="mode" id="expert" value="expert">
+        <label for="expert">Expert</label><br>
+        <button type="submit" id="accept">Accept</button>
+      </div>
+      <div class="sudokuField">
+        <div id="time">
+          Time:- <span id="minute">0</span>:<span id="second">0</span>
+        </div>
+        <div class="board">
+          <div class="square" id="s1">
+            <div class="box" id="00"></div>
+            <div class="box" id="01"></div>
+            <div class="box" id="02"></div>
+            <div class="box" id="10"></div>
+            <div class="box" id="11"></div>
+            <div class="box" id="12"></div>
+            <div class="box" id="20"></div>
+            <div class="box" id="21"></div>
+            <div class="box" id="22"></div>
+          </div>
+          <div class="square" id="s2">
+            <div class="box" id="03"></div>
+            <div class="box" id="04"></div>
+            <div class="box" id="05"></div>
+            <div class="box" id="13"></div>
+            <div class="box" id="14"></div>
+            <div class="box" id="15"></div>
+            <div class="box" id="23"></div>
+            <div class="box" id="24"></div>
+            <div class="box" id="25"></div>
+          </div>
+          <div class="square" id="s3">
+            <div class="box" id="06"></div>
+            <div class="box" id="07"></div>
+            <div class="box" id="08"></div>
+            <div class="box" id="16"></div>
+            <div class="box" id="17"></div>
+            <div class="box" id="18"></div>
+            <div class="box" id="26"></div>
+            <div class="box" id="27"></div>
+            <div class="box" id="28"></div>
+          </div>
+          <div class="square" id="s4">
+            <div class="box" id="30"></div>
+            <div class="box" id="31"></div>
+            <div class="box" id="32"></div>
+            <div class="box" id="40"></div>
+            <div class="box" id="41"></div>
+            <div class="box" id="42"></div>
+            <div class="box" id="50"></div>
+            <div class="box" id="51"></div>
+            <div class="box" id="52"></div>
+          </div>
+          <div class="square" id="s5">
+            <div class="box" id="33"></div>
+            <div class="box" id="34"></div>
+            <div class="box" id="35"></div>
+            <div class="box" id="43"></div>
+            <div class="box" id="44"></div>
+            <div class="box" id="45"></div>
+            <div class="box" id="53"></div>
+            <div class="box" id="54"></div>
+            <div class="box" id="55"></div>
+          </div>
+          <div class="square" id="s6">
+            <div class="box" id="36"></div>
+            <div class="box" id="37"></div>
+            <div class="box" id="38"></div>
+            <div class="box" id="46"></div>
+            <div class="box" id="47"></div>
+            <div class="box" id="48"></div>
+            <div class="box" id="56"></div>
+            <div class="box" id="57"></div>
+            <div class="box" id="58"></div>
+          </div>
+          <div class="square" id="s7">
+            <div class="box" id="60"></div>
+            <div class="box" id="61"></div>
+            <div class="box" id="62"></div>
+            <div class="box" id="70"></div>
+            <div class="box" id="71"></div>
+            <div class="box" id="72"></div>
+            <div class="box" id="80"></div>
+            <div class="box" id="81"></div>
+            <div class="box" id="82"></div>
+          </div>
+          <div class="square" id="s8">
+            <div class="box" id="63"></div>
+            <div class="box" id="64"></div>
+            <div class="box" id="65"></div>
+            <div class="box" id="73"></div>
+            <div class="box" id="74"></div>
+            <div class="box" id="75"></div>
+            <div class="box" id="83"></div>
+            <div class="box" id="84"></div>
+            <div class="box" id="85"></div>
+          </div>
+          <div class="square" id="s9">
+            <div class="box" id="66"></div>
+            <div class="box" id="67"></div>
+            <div class="box" id="68"></div>
+            <div class="box" id="76"></div>
+            <div class="box" id="77"></div>
+            <div class="box" id="78"></div>
+            <div class="box" id="86"></div>
+            <div class="box" id="87"></div>
+            <div class="box" id="88"></div>
+          </div>
+        </div>
+        <div class="numbers">
+          <div class="keys" id="n1">1</div>
+          <div class="keys" id="n2">2</div>
+          <div class="keys" id="n3">3</div>
+          <div class="keys" id="n4">4</div>
+          <div class="keys" id="n5">5</div>
+          <div class="keys" id="n6">6</div>
+          <div class="keys" id="n7">7</div>
+          <div class="keys" id="n8">8</div>
+          <div class="keys" id="n9">9</div>
+          <div class="keys" id="n0">X</div>
+        </div>
+        <div class="controller">
+          <button type="submit" name="reset" id="reset">Reset</button>
+          <button type="submit" name="solve" id="solve">Solved</button>
+        </div>
+        <div id="result"></div>
     </div>
-    <div id="time">
-      Time:- <span id="minute">0</span>:<span id="second">0</span>
-    </div>
-    <div class="board">
-      <div class="square" id="s1">
-        <div class="box" id="00"></div>
-        <div class="box" id="01"></div>
-        <div class="box" id="02"></div>
-        <div class="box" id="10"></div>
-        <div class="box" id="11"></div>
-        <div class="box" id="12"></div>
-        <div class="box" id="20"></div>
-        <div class="box" id="21"></div>
-        <div class="box" id="22"></div>
-      </div>
-      <div class="square" id="s2">
-        <div class="box" id="03"></div>
-        <div class="box" id="04"></div>
-        <div class="box" id="05"></div>
-        <div class="box" id="13"></div>
-        <div class="box" id="14"></div>
-        <div class="box" id="15"></div>
-        <div class="box" id="23"></div>
-        <div class="box" id="24"></div>
-        <div class="box" id="25"></div>
-      </div>
-      <div class="square" id="s3">
-        <div class="box" id="06"></div>
-        <div class="box" id="07"></div>
-        <div class="box" id="08"></div>
-        <div class="box" id="16"></div>
-        <div class="box" id="17"></div>
-        <div class="box" id="18"></div>
-        <div class="box" id="26"></div>
-        <div class="box" id="27"></div>
-        <div class="box" id="28"></div>
-      </div>
-      <div class="square" id="s4">
-        <div class="box" id="30"></div>
-        <div class="box" id="31"></div>
-        <div class="box" id="32"></div>
-        <div class="box" id="40"></div>
-        <div class="box" id="41"></div>
-        <div class="box" id="42"></div>
-        <div class="box" id="50"></div>
-        <div class="box" id="51"></div>
-        <div class="box" id="52"></div>
-      </div>
-      <div class="square" id="s5">
-        <div class="box" id="33"></div>
-        <div class="box" id="34"></div>
-        <div class="box" id="35"></div>
-        <div class="box" id="43"></div>
-        <div class="box" id="44"></div>
-        <div class="box" id="45"></div>
-        <div class="box" id="53"></div>
-        <div class="box" id="54"></div>
-        <div class="box" id="55"></div>
-      </div>
-      <div class="square" id="s6">
-        <div class="box" id="36"></div>
-        <div class="box" id="37"></div>
-        <div class="box" id="38"></div>
-        <div class="box" id="46"></div>
-        <div class="box" id="47"></div>
-        <div class="box" id="48"></div>
-        <div class="box" id="56"></div>
-        <div class="box" id="57"></div>
-        <div class="box" id="58"></div>
-      </div>
-      <div class="square" id="s7">
-        <div class="box" id="60"></div>
-        <div class="box" id="61"></div>
-        <div class="box" id="62"></div>
-        <div class="box" id="70"></div>
-        <div class="box" id="71"></div>
-        <div class="box" id="72"></div>
-        <div class="box" id="80"></div>
-        <div class="box" id="81"></div>
-        <div class="box" id="82"></div>
-      </div>
-      <div class="square" id="s8">
-        <div class="box" id="63"></div>
-        <div class="box" id="64"></div>
-        <div class="box" id="65"></div>
-        <div class="box" id="73"></div>
-        <div class="box" id="74"></div>
-        <div class="box" id="75"></div>
-        <div class="box" id="83"></div>
-        <div class="box" id="84"></div>
-        <div class="box" id="85"></div>
-      </div>
-      <div class="square" id="s9">
-        <div class="box" id="66"></div>
-        <div class="box" id="67"></div>
-        <div class="box" id="68"></div>
-        <div class="box" id="76"></div>
-        <div class="box" id="77"></div>
-        <div class="box" id="78"></div>
-        <div class="box" id="86"></div>
-        <div class="box" id="87"></div>
-        <div class="box" id="88"></div>
-      </div>
-    </div>
-    <div class="numbers">
-      <div class="keys" id="n1">1</div>
-      <div class="keys" id="n2">2</div>
-      <div class="keys" id="n3">3</div>
-      <div class="keys" id="n4">4</div>
-      <div class="keys" id="n5">5</div>
-      <div class="keys" id="n6">6</div>
-      <div class="keys" id="n7">7</div>
-      <div class="keys" id="n8">8</div>
-      <div class="keys" id="n9">9</div>
-      <div class="keys" id="n0">X</div>
-    </div>
-    <div class="controller">
-      <button type="submit" name="start" id="start">Start</button>
-      <button type="submit" name="reset" id="reset">Reset</button>
-      <button type="submit" name="solve" id="solve">Solve</button>
-    </div>
-    <div id="result"></div>
   </div>
+</center>
 </body>
 </html>
