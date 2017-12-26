@@ -29,6 +29,6 @@ const fillSudoku = function(){
   }
   prevPos = pos;
   pos.style.background = '#c1f237';
-  document.getElementsByClassName('numbers')[0].onclick = (()=>{setNumber(pos)});
+  getNumber().onclick = (()=>{setNumber(pos)});
   document.onkeydown=(()=>{getNumberByKeyBoard(pos)});
 };
