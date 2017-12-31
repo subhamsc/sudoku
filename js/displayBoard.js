@@ -1,4 +1,3 @@
-"use strict";
 const DisplayBoard = function(){
   this.board = [];
 };

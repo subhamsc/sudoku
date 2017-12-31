@@ -1,4 +1,3 @@
-"use strict";
 const SudokuShuffler = function(board){
   this.board = board;
 };

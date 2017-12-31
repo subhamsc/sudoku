@@ -1,4 +1,3 @@
-"use strict";
 const SudokuSolver = function(board){
   this.board = board;
   this.emptyPositions = [];
