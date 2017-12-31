@@ -61,7 +61,3 @@ let winningStatus = function(){
 let lossingStatus = function(){
   return 'Ohhhhh wrong solution';
 };
-
-let getPos = function(row,col){
-  return ''+row+col;
-};

@@ -1,27 +1,31 @@
-const saveEmptyPosition = function(board){
-  let emptyPositions = [];
-  board.forEach(function(row,index){
-    row.forEach(function(col,index2){
+"use strict";
+const SudokuSolver = function(board){
+  this.board = board;
+  this.emptyPositions = [];
+};
+
+SudokuSolver.prototype.getEmptyPosition = function(){
+  this.board.forEach((row,rowIndex)=>{
+    row.forEach((col,colIndex)=>{
       if(col==0)
-      emptyPositions.push([index,index2])
+      this.emptyPositions.push([rowIndex,colIndex])
     });
   });
-  return emptyPositions;
 };
 
-const checkRow = function(board,value,row){
-  return board[row].every(function(ele){
-    return ele!=value
+SudokuSolver.prototype.checkRow = function(value,row){
+  return this.board[row].every((ele)=>{
+    return ele!=value;
   });
 };
 
-const checkCol = function(board,value,col){
-  return board.every(function(row){
+SudokuSolver.prototype.checkCol = function(value,col){
+  return this.board.every((row)=>{
     return row[col]!=value;
   });
 };
 
-const checkSquare = function(board,value,row,col){
+SudokuSolver.prototype.checkSquare = function(value,row,col){
   let rowIndex = 0;
   let colIndex = 0;
   let squareSize = 3;
@@ -33,44 +37,42 @@ const checkSquare = function(board,value,row,col){
   }
   for (let i=rowIndex; i<rowIndex+squareSize; i++) {
     for (let j=colIndex; j<colIndex+squareSize; j++) {
-      if(board[i][j]==value)
+      if(this.board[i][j]==value)
       return false;
     }
   }
   return true;
 };
 
-const checkValue = function(board,value,row,col){
-  if(checkRow(board,value,row) && checkCol(board,value,col) && checkSquare(board,value,row,col))
-  return true;
-  return false
+SudokuSolver.prototype.checkValue = function(value,row,col){
+  return this.checkRow(value,row) && this.checkCol(value,col) && this.checkSquare(value,row,col);
 };
 
-const solvePuzzle = function(board,emptyPositions){
+SudokuSolver.prototype.solvePuzzle = function(){
   let limit = 9;
-  for (let i=0; i<emptyPositions.length;) {
-    let row = emptyPositions[i][0];
-    let col = emptyPositions[i][1];
-    let value = board[row][col]+1;
-    let found = false
-    while (!found && value<=limit){
-      if(checkValue(board,value,row,col)){
-        found = true;
-        board[row][col]=value;
+  for (let i=0; i<this.emptyPositions.length;) {
+    let row = this.emptyPositions[i][0];
+    let col = this.emptyPositions[i][1];
+    let value = this.board[row][col]+1;
+    let findValue = false
+    while (!findValue && value<=limit){
+      if(this.checkValue(value,row,col)){
+        findValue = true;
+        this.board[row][col]=value;
         i++;
       } else {
         value++;
       }
     }
-    if(!found){
-      board[row][col]=0;
+    if(!findValue){
+      this.board[row][col]=0;
       i--;
     }
   }
-  return board;
 };
 
-const solveSudoku = function(board){
-  let emptyPositions = saveEmptyPosition(board);
-  return solvePuzzle(board,emptyPositions);
+SudokuSolver.prototype.solveSudoku = function(){
+  this.getEmptyPosition();
+  this.solvePuzzle();
+  return this.board;
 };

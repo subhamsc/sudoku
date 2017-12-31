@@ -1,3 +1,4 @@
+"use strict";
 let filledPos = [];
 const getFilledBoard = function(){
   let filledSudoku = [];
@@ -26,8 +27,9 @@ const setTime = function(time){
 const loadSudoku = function(){
   let emptyPos = getLevel();
   if(!emptyPos) emptyPos = 40;
-  let displayBoard = getDisplayBoard(emptyPos);
-  displayBoard.forEach((row,rowIndex)=>{
+  let displayBoard = new DisplayBoard()
+  let board = displayBoard.getDisplayBoard(emptyPos);
+  board.forEach((row,rowIndex)=>{
     row.forEach((ele,colIndex)=>{
       if(ele>0){
         let pos = getPos(rowIndex,colIndex);
@@ -44,12 +46,16 @@ const hasWon = function(filledSudoku){
   return isUniq(filledSudoku);
 };
 
-const gameResult = function(){
-  let filledSudoku = getFilledBoard();
+const setGameStatus = function(filledSudoku){
   if(hasWon(filledSudoku))
   getResult().innerHTML = winningStatus();
   else
   getResult().innerHTML = lossingStatus();
+};
+
+const gameResult = function(){
+  let filledSudoku = getFilledBoard();
+  setGameStatus(filledSudoku);
   clearInterval(timeInterval);
   getSolveId().style.visibility = setHidden();
   getBoard().disabled = true;

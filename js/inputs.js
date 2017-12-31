@@ -1,3 +1,4 @@
+"use strict";
 const takePosition = function(){
   let id = event.target.id;
   return document.getElementById(id);
