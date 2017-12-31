@@ -1,5 +1,6 @@
-"use strict";
 let filledPos = [];
+let timeInterval = '';
+
 const getFilledBoard = function(){
   let filledSudoku = [];
   for(let rowIndex=0; rowIndex<9; rowIndex++){
@@ -14,7 +15,6 @@ const getFilledBoard = function(){
   return filledSudoku;
 };
 
-let timeInterval = '';
 const setTime = function(time){
   timeInterval = setInterval(()=>{
     time+=1000;
@@ -66,10 +66,10 @@ const reset = function(){
     row.forEach((ele,colIndex)=>{
       let pos = getPos(rowIndex,colIndex);
       getPosId(pos).innerHTML = '';
-      getPosId(pos).style.background = "white"
+      getPosId(pos).style.background = "white";
     });
   });
-  getResult().innerHTML = ''
+  getResult().innerHTML = '';
   clearInterval(timeInterval);
   getMinute().innerHTML = 0;
   getSecond().innerHTML = 0;

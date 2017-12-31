@@ -1,63 +1,35 @@
-let getPosId = function(pos){
-  return document.getElementById(pos);
-};
+let getId = (id)=> document.getElementById(id);
 
-let getMinute = function(){
-  return document.getElementById('minute');
-};
+let getClass = (className)=> document.getElementsByClassName(className)[0];
 
-let getSecond = function(){
-  return document.getElementById('second');
-};
+let getPosId = (pos)=> getId(pos);
 
-let getResult = function(){
-  return document.getElementById('result');
-};
+let getMinute = ()=> getId('minute');
 
-let getSolveId = function(){
-  return document.getElementById('solve');
-};
+let getSecond = ()=> getId('second');
 
-let getBoard = function(){
-  return document.getElementsByClassName('board')[0];
-};
+let getResult = ()=> getId('result');
 
-let getLevelId = function(){
-  return document.getElementsByClassName('levels')[0];
-};
+let getSolveId = ()=> getId('solve');
 
-let getSudokuField = function(){
-  return document.getElementsByClassName('sudokuField')[0];
-};
+let getBoard = ()=> getClass('board');
 
-let getResetId = function(){
-  return document.getElementById('reset');
-};
+let getLevelId = ()=> getClass('levels');
 
-let getAcceptId = function(){
-  return document.getElementById('accept');
-};
+let getSudokuField = ()=> getClass('sudokuField');
 
-let getNumber = function(){
-  return document.getElementsByClassName('numbers')[0];
-};
+let getResetId = ()=> getId('reset');
 
-let setHidden = function(){
-  return 'hidden';
-};
+let getAcceptId = ()=> getId('accept');
 
-let setVisible = function(){
-  return 'visible';
-};
+let getNumber = ()=> getClass('numbers');
 
-let isInvalid = function(id){
-  return id==null || id == 'accept';
-};
+let setHidden = ()=> 'hidden';
 
-let winningStatus = function(){
-  return 'Congratulation right solution';
-};
+let setVisible = ()=> 'visible';
 
-let lossingStatus = function(){
-  return 'Ohhhhh wrong solution';
-};
+let isInvalid = (id)=> id==null || id == 'accept';
+
+let winningStatus = ()=> 'Congratulation right solution';
+
+let lossingStatus = ()=> 'Ohhhhh wrong solution';
