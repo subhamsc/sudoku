@@ -43,10 +43,12 @@ const loadSudoku = function(){
 
 
 const hasWon = function(filledSudoku){
-  return new SudokuChecker.isUniq(filledSudoku);
+  return (new SudokuChecker(filledSudoku).isUniq());
 };
 
 const setGameStatus = function(filledSudoku){
+  console.log(filledSudoku);
+  
   if(hasWon(filledSudoku))
   getResult().innerHTML = winningStatus();
   else
@@ -79,6 +81,7 @@ const reset = function(){
 };
 
 const getLevel = function(event){
+  if(!event) return;
   let level = event.target.id;
   return setLevel(level);
 };
