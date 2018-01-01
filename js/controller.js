@@ -43,7 +43,7 @@ const loadSudoku = function(){
 
 
 const hasWon = function(filledSudoku){
-  return isUniq(filledSudoku);
+  return new SudokuChecker.isUniq(filledSudoku);
 };
 
 const setGameStatus = function(filledSudoku){
@@ -78,12 +78,12 @@ const reset = function(){
   loadSudoku();
 };
 
-const getLevel = function(){
+const getLevel = function(event){
   let level = event.target.id;
   return setLevel(level);
 };
 
-const setChallenge = function(){
+const setChallenge = function(event){
   let id = event.target.id;
   if(isInvalid(id)) return;
   document.getElementById(id).onclick = getLevel;
