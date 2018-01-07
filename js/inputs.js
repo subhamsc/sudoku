@@ -21,7 +21,7 @@ const getNumberByKeyBoard = function(pos){
 }
 
 let prevPos = 0;
-const fillSudoku = function(){
+const fillSudoku = function(filledPos){
   if(prevPos) prevPos.style.background = 'white';
   let pos = takePosition();
   if(filledPos.includes(pos.id)){

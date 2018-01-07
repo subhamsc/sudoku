@@ -52,3 +52,5 @@ SudokuChecker.prototype.checkInSquares = function(){
 SudokuChecker.prototype.isUniq = function(){
   return this.checkInRows() && this.checkInCols() && this.checkInSquares();
 };
+
+// module.exports = SudokuChecker;

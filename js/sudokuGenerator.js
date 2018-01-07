@@ -1,3 +1,7 @@
+// const SudokuChecker = require('./sudokuChecker.js');
+// const SudokuShuffler = require('./sudokuTransform.js');
+// const SudokuSolver = require('./sudokuSolver.js');
+
 const board =  [
   [0, 0, 0, 0, 0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -21,3 +25,5 @@ SudokuGenerator.prototype.generate = function(){
   return this.board;
   this.generate();
 };
+
+// module.exports = SudokuGenerator;

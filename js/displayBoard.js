@@ -1,10 +1,26 @@
+// const SudokuChecker = require('./sudokuChecker.js');
+// const SudokuGenerator = require('./sudokuGenerator.js');
+// const SudokuSolver = require('./sudokuSolver.js');
 const DisplayBoard = function(){
   this.board = [];
 };
 
+// const generateRandomNumberBetween=function(x,y) {
+//   return Math.floor(Math.random()*(y-x))+x;
+// };
+
+// const getRow = function(pos){
+//   return Number.parseInt(pos/10);
+// };
+
+// const getCol = function(pos){
+//   return pos%10;
+// };
+
+
 DisplayBoard.prototype.getEmptyPosition = function(max,positions){
-  let row = generateRandomNumberBetween(0,8);
-  let col = generateRandomNumberBetween(0,8);
+  let row = generateRandomNumberBetween(0,9);
+  let col = generateRandomNumberBetween(0,9);
   this.board[row][col]=0;
   max--;
   try {
@@ -33,3 +49,5 @@ DisplayBoard.prototype.getDisplayBoard = function(numOfPos){
   });
   return this.board;
 };
+
+// module.exports = DisplayBoard;

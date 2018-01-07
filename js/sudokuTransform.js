@@ -1,3 +1,15 @@
+// const generateRandomNumberBetween=function(x,y) {
+//   return Math.floor(Math.random()*(y-x))+x;
+// };
+
+// const getRow = function(pos){
+//   return Number.parseInt(pos/10);
+// };
+
+// const getCol = function(pos){
+//   return pos%10;
+// };
+
 const SudokuShuffler = function(board){
   this.board = board;
 };
@@ -62,34 +74,34 @@ SudokuShuffler.prototype.swapNumber = function(successor,replacer){
 
 
 SudokuShuffler.prototype.shuffleNumbers = function(){
-  let firstNum = generateRandomNumberBetween(1,9);
-  let secondNum = generateRandomNumberBetween(1,9);
+  let firstNum = generateRandomNumberBetween(1,10);
+  let secondNum = generateRandomNumberBetween(1,10);
   return this.swapNumber(firstNum,secondNum);
 };
 
 SudokuShuffler.prototype.shuffleRows = function(){
-  let firstRow = generateRandomNumberBetween(0,2);
-  let secondRow = generateRandomNumberBetween(0,2);
-  let block = 3 * generateRandomNumberBetween(0,2);
+  let firstRow = generateRandomNumberBetween(0,3);
+  let secondRow = generateRandomNumberBetween(0,3);
+  let block = 3 * generateRandomNumberBetween(0,3);
   return this.swapRows(firstRow+block,secondRow+block);
 };
 
 SudokuShuffler.prototype.shuffleCols = function(){
-  let firstCol = generateRandomNumberBetween(0,2);
-  let secondCol = generateRandomNumberBetween(0,2);
-  let block = 3 * generateRandomNumberBetween(0,2);
+  let firstCol = generateRandomNumberBetween(0,3);
+  let secondCol = generateRandomNumberBetween(0,3);
+  let block = 3 * generateRandomNumberBetween(0,3);
   return this.swapCols(firstCol+block,secondCol+block);
 };
 
 SudokuShuffler.prototype.shuffleRowBlocks = function(){
-  let firstBlock = 3 * generateRandomNumberBetween(0,2);
-  let secondBlock = 3 * generateRandomNumberBetween(0,2);
+  let firstBlock = 3 * generateRandomNumberBetween(0,3);
+  let secondBlock = 3 * generateRandomNumberBetween(0,3);
   return this.swapRowBlocks(firstBlock,secondBlock);
 };
 
 SudokuShuffler.prototype.shuffleColBlocks = function(){
-  let firstBlock = 3 * generateRandomNumberBetween(0,2);
-  let secondBlock = 3 * generateRandomNumberBetween(0,2);
+  let firstBlock = 3 * generateRandomNumberBetween(0,3);
+  let secondBlock = 3 * generateRandomNumberBetween(0,3);
   return this.swapColBlocks(firstBlock,secondBlock);
 };
 
@@ -101,3 +113,5 @@ SudokuShuffler.prototype.shuffle = function(){
   this.shuffleColBlocks();
   return this.board;
 };
+
+// module.exports = SudokuShuffler;

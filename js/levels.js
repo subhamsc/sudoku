@@ -1,4 +1,4 @@
-const setLevel = function(level){
+const getLevel = function(level){
   let modes = {
     beginner:10,
     easy:20,
@@ -8,3 +8,4 @@ const setLevel = function(level){
   };
   return modes[level];
 };
+// exports.getLevel = getLevel;

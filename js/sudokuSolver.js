@@ -75,3 +75,5 @@ SudokuSolver.prototype.solveSudoku = function(){
   this.solvePuzzle();
   return this.board;
 };
+
+// module.exports = SudokuSolver;
